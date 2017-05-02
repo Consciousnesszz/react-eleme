@@ -1,0 +1,137 @@
+/*------------reset------------*/
+
+html, body, h1, h2, h3, h4, h5, h6, p, ol, li, ul, dl, dd, dt, form, input {
+	margin: 0; padding: 0;
+}
+html, body, #container, #container > div {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	font-size: 0.12rem;
+	color: #333;
+	font-family: "微软雅黑";
+}
+li {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+	color: #333;
+}
+input {
+	outline: none;
+}
+i, b {
+	font-style: normal;
+}
+
+/*------------address-------------*/
+
+#address {
+	width: 100%;
+	height: 100%;
+	background: #f1f1f1;
+	display: flex;
+	flex-direction: column;
+}
+#address .bar-header {
+	width: 100%;
+	height: 0.44rem;
+	background: #0096ff;
+	padding: 0;
+}
+#address .title {
+	font-size: 0.18rem;
+	color: #fff;
+	margin: 0;
+	text-align: center;
+	height: 0.44rem;
+	line-height: 0.44rem;
+	font-weight: normal;
+}
+#address .bar-header span {
+	display: block;
+	position: absolute;
+	left: 0.07rem;
+	top: 0.05rem;
+	width: 0.31rem;
+	height: 0.31rem;
+	background: url(../img/arrow.png) no-repeat center;
+	background-size: 40% 70%;
+	opacity: 0.7;
+}
+#address .bar-subheader {
+	width: 100%;
+	height: 0.44rem;
+	background: #0096ff;
+	position: relative;
+	padding: 0;
+	display: inline-block;
+}
+#address .bar-subheader input {
+	display: block;
+	margin: 0.05rem auto;
+	width: 3rem;
+	height: 0.27rem;
+	padding: 0 0.18rem;
+	font-size: 0.14rem;
+	line-height: 0.27rem;
+	border-radius: 0.18rem;
+	border: none;
+}
+#address .bar-subheader span {
+	display: block;
+	position: absolute;
+	top: 0.12rem;
+	right: 0.36rem;
+	width: 0.12rem;
+	height: 0.12rem;
+	background: url(../img/x.png) no-repeat center;
+	background-size: 100% 100%;
+}
+
+
+#address .content {
+	flex: 1;
+	color: #333;
+	background: #f1f1f1;
+	overflow: auto;
+}
+#address .content .list-item {
+	width: 100%;
+	padding: 0.1rem 0;
+	box-sizing: border-box;
+	background: #fff;
+	margin: 0 auto;
+	text-align: left;
+	position: relative;
+}
+#address .content .list-item:after{
+	content: "";
+	display: block;
+	position: absolute;
+	height: 1px;
+	width: 100%;
+	background: #eee;
+	transform: scale(1,0.5);
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+}
+#address .content .list-item h4 {
+	line-height: 0.14rem;
+	font-size: 0.14rem;
+	font-weight: 700;
+	color: #333;
+	padding: 0 0.15rem;
+}
+#address .content .list-item p {
+	line-height: 0.12rem;
+	font-size: 0.12rem;
+	color: #999;
+	margin-top: 0.05rem;
+	padding: 0 0.15rem;
+}
