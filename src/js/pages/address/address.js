@@ -28,11 +28,7 @@ class Address extends React.Component {
 				<div className="content has-header">
 					{
 						this.state.addressList.map(function(value, index){
-							var link = `/rlist/${value.geohash}`;
-							return (
-								<Link to={link} key={index}>
-									<Info data={value}></Info>
-								</Link>)
+							return <Info data={value} key={index} link={value.geohash}></Info>
 						})
 					}
 				</div>

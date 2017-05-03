@@ -82,7 +82,7 @@ i, b {
 	border: none;
 }
 #address .bar-subheader span {
-	display: block;
+	display: none;
 	position: absolute;
 	top: 0.12rem;
 	right: 0.36rem;
@@ -134,4 +134,314 @@ i, b {
 	color: #999;
 	margin-top: 0.05rem;
 	padding: 0 0.15rem;
+}
+
+/*------------rlist-------------*/
+
+#rlist {
+	width: 100%;
+	height: 100%;
+	background: #f1f1f1;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+#rlist .r-wrap {
+	flex: 1;
+	overflow-y: auto; 
+}
+
+#rlist .header {
+	background: #0096ff;
+	padding-bottom: 0.12rem;
+}
+#rlist .header-top {
+	padding: 0.07rem 0.14rem;
+	display: flex;
+	justify-content: space-between;
+}
+#rlist .location {
+	display: inline-block;
+	max-width: 1.55rem;
+	white-space: nowrap;
+	overflow: hidden;
+	color: #fff;
+	font-weight: 100;
+	vertical-align: middle;
+}
+#rlist .icon-loca {
+	display: inline-block;
+	background: url(../img/loca.png) no-repeat center;
+	background-size: 0.2rem 0.24rem;
+	width: 0.2rem;
+	height: 0.35rem;
+	vertical-align: middle;
+}
+#rlist .weather {
+	display: flex;
+	line-height: 0.14rem;
+	color: #fff;
+	font-size: 0.12rem;
+	padding-top: 0.05rem;
+}
+#rlist .weather .pic img {
+	width: 0.28rem;
+	height: 0.28rem;
+	margin-left: 0.03rem;
+}
+
+#rlist .header-center {
+	width: 100%;
+	height: 0.49rem;
+}
+#rlist .header-center .rl-search {
+	box-sizing: border-box;
+	width: 92%;
+	height: 0.35rem;
+	border: 0;
+	border-radius: 0.35rem;
+	text-align: center;
+	font-size: 0.13rem;
+	margin: 0.03rem 4%;
+}
+
+#rlist .header-bottom {
+	box-sizing: border-box;
+	width: 100%;
+	height: 0.14rem;
+	font-size: 0.12rem;
+	line-height: 0.14rem;
+	overflow: hidden;
+	padding: 0 0.12rem;
+}
+#rlist .header-bottom ul {
+	display: flex;
+	overflow: auto;
+	overflow-y: hidden;
+}
+#rlist .header-bottom ul li {
+	flex-shrink: 0;
+	margin-right: 0.12rem;
+	color: #fff;
+}
+
+#rlist .swipe-wrap {
+	position: relative;
+	margin-bottom: 0.15rem;
+}
+#rlist .swipe {
+	width: 100%;
+	height: 1.6rem;
+	background: #fcfcfc;
+	padding-top: 0.1rem;
+}
+#rlist .swipe .swipe-item {
+	float: left;
+	width: 25%;
+	height: 50%;
+	text-align: center;
+}
+#rlist .swipe .swipe-item p {
+	color: #777;
+}
+#rlist .swipe .swipe-item img {
+	width: 45%;
+}
+
+/* 小数点布局 */
+#position{
+   position: absolute;
+   bottom: 0rem;
+   left: 0;
+   margin-top: 0.426667rem;
+   margin-bottom: 0.213333rem;
+   margin: 0;
+   opacity: 0.4;
+   width: 100%;
+   filter: alpha(opacity=50);
+   text-align: center;
+}
+ 
+#position li{
+      width: 0.07rem;
+      height: 0.07rem;
+      margin: 0 0.04rem;
+      display: inline-block;
+      -webkit-border-radius: 50%;
+      border-radius: 50%;
+      background-color: #aaa;
+}
+#position li.cur{
+    background-color: #000;
+}
+
+#rlist .content {
+	flex: 1;
+}
+#rlist .c-title{
+	background: #fff;
+	font-size: 0.14rem;
+	padding: 0.1rem 0.15rem 0;
+}
+#rlist section {
+	background: #fff;
+	padding: 0.1rem;
+}
+#rlist .restaurant {
+	width: 100%;
+	height: 0.67rem;
+	padding: 0.11rem 0;
+	display: flex;
+	justify-content: space-between;
+	border-top: 1px solid #f4f4f4;
+}
+#rlist .restaurant .res-img img{
+	width: 0.6rem;
+}
+#rlist .restaurant .res-dis {
+	width: 2.8rem;
+	margin-left: 0.015rem;
+	font-size: 0.16rem;
+}
+.dis-top, .dis-center, .dis-bottom{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.dis-center, .dis-bottom{
+	color: #999;
+}
+#rlist .restaurant .res-title {
+	max-width: 1.8rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 0.15rem;
+} 
+#rlist .restaurant .res-title:before {
+	display: inline-block;
+	margin-top: 0.025rem;
+	margin-right: .07rem;
+    padding: 0 .03rem;
+    height: .16rem;
+    border-radius: .032rem;
+    background-color: #ffd930;
+    color: #52250a;
+    content: "\54C1\724C";
+    vertical-align: top;
+    text-align: center;
+    font-weight: 700;
+    font-size: .11rem;
+    line-height: .12rem;
+}
+#rlist .restaurant .dis-top .no-brand:before {
+	content: "";
+	display: none;
+}
+#rlist .restaurant .top-tag .tags{
+	display: inline-block;
+	font-size: 0.11rem;
+	line-height: 0.11rem;
+	color: rgb(153,153,153);
+	border: 1px solid rgb(221, 221, 221);
+	margin-bottom: 0.03rem;
+	margin-left: 0.03rem;
+}
+#rlist .restaurant .res-info {
+	color: #666;
+	font-size: 0.12rem;
+	margin: 0.04rem 0;
+}
+#rlist .restaurant .res-info span {
+	color: #ff6000;
+	padding: 0 0.03rem;
+}
+#rlist .restaurant .center-tag {
+	font-size: 0.12rem;
+}
+#rlist .restaurant .ontime {
+	display: inline-block;
+	box-sizing: border-box;
+	padding: 0 .02rem;
+	margin-right: 0.03rem; 
+    border: 1px solid #44a5ff;
+    border-radius: .02rem;
+    background-color: #fff;
+    color: #2395ff;
+    font-size: .12rem;
+    line-height: .16rem;
+}
+#rlist .restaurant .feeder {
+	display: inline-block;
+	box-sizing: border-box;
+	padding: 0 .02rem;
+    border: 1px solid #44a5ff;
+    border-radius: .02rem;
+    font-size: .12rem;
+    line-height: .16rem;
+	background-color: #2395ff;
+	color: #fff;
+}
+#rlist .restaurant .dis-bottom {
+	font-size: 0.12rem;
+}
+#rlist .restaurant .r-time {
+	color: #2395ff;
+}
+.rl-wrap .more:after {
+	content: "正在加载更多商家";
+	display: block;
+	width: 100%;
+	height: 0.3rem;
+	line-height: 0.3rem;
+	font-size: 0.14rem;
+	text-align: center;
+	background: #fff;
+}
+.rl-wrap .no-more:after	{
+	content: "没有更多商家了- -!";
+	display: block;
+	width: 100%;
+	height: 0.3rem;
+	line-height: 0.3rem;
+	font-size: 0.14rem;
+	text-align: center;
+	background: #fff;
+}
+
+/*-----------footer---------*/
+.footer {
+	width: 100%;
+	height: 0.5rem;
+	background: #fff;
+	border-top: 1px solid #eee;
+}
+.footer ul {
+	display: flex;
+	justify-content: space-around;
+	align-content: center;
+	width: 100%;
+	height: 100%;
+}
+.footer ul li {
+	width: 25%;
+	height: 100%;
+}
+.footer ul li a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	color: #999;
+	font-size: 0.12rem;
+	text-align: center;
+	overflow: hidden;
+	padding-top: 0.1rem;
+}
+.footer ul li a i{
+	display: block;
+	font-size: 0.2rem;
+}
+.footer .active {
+	color: #0096ff;
 }

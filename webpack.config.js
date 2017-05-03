@@ -36,6 +36,12 @@ module.exports = {
 				use : ['css-loader', 'sass-loader']
 			}),
 			exclude : /node_modules/
+		},{
+			test : /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
+			use: [{
+				loader: 'url-loader?limit=8192&name=images/[hash:8].[name].[ext]'
+			}],
+			exclude : /node_modules/
 		}]
 	},
 	plugins : [

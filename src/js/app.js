@@ -6,12 +6,15 @@ import Address from './pages/address/address.js'
 import Detail from './pages/detail/detail.js'
 import Rlist from './pages/rlist/rlist.js'
 
-import rem from './common/rem.js'
+import rem from './tools/rem.js'
+import icon from '../css/font_bgp7kcvc5o9cz0k9/iconfont.css'
+import css from '../css/index.css'
 
 class Container extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			geohash : ''
 		}
 	}
 	render (){
@@ -19,7 +22,6 @@ class Container extends React.Component {
 			<Router>
 				<div>
 					<Route exact path="/" component={Rlist}/>
-					<Route path="/rlist/:geohash" component={Rlist}/>
 					<Route path='/detail' component={Detail}/>
 					<Route path='/address' component={Address}/>
 				</div>
