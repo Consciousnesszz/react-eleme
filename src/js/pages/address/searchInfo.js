@@ -3,7 +3,11 @@ import method from '../../tools/commonMethod.js'
 
 class Info extends React.Component {
 	setAddr (){
-		method.store('loca', this.props.link)
+		method.store('loca', {
+			geohash: this.props.data.geohash,
+			lat : this.props.data.latitude,
+			lnt : this.props.data.longitude
+		})
 		location.hash = '/';
 	}
 	render (){

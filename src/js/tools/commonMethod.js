@@ -28,6 +28,9 @@ var method = {
 		} else {
 			return "";
 		}
+	},
+	factory: {
+
 	}
 }
 

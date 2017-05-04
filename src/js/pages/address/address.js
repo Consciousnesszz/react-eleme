@@ -15,10 +15,16 @@ class Address extends React.Component {
 		}
 	}
 	update (list){
-		this.setState({
-			addressList: list
-		})
-		addrs = list;
+		if (list instanceof Array) {
+			this.setState({
+				addressList: list
+			})
+			addrs = list;
+		} else {
+			this.setState({
+				addressList: []
+			})
+		}
 	}
 	render (){
 		var that = this;
@@ -28,7 +34,7 @@ class Address extends React.Component {
 				<div className="content has-header">
 					{
 						this.state.addressList.map(function(value, index){
-							return <Info data={value} key={index} link={value.geohash}></Info>
+							return <Info data={value} key={index}></Info>
 						})
 					}
 				</div>

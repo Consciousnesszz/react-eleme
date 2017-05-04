@@ -1,15 +1,17 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import Scroller from 'react-infinite-scroller';
 
 import method from '../../tools/commonMethod.js'
 
 import Weather from './weather.js'
 import Swipe from './swipe.js'
-import RstInfo from './restaurant.js'
+import SearchInp from './searchInp.js'
 
+import RstInfo from '../../common/restaurant.js'
 import Footer from '../../common/footer.js'
 
-var loca = {},
+var title = {},
 	weather = {},
 	swipePic = [],
 	hotWords = [],
@@ -19,78 +21,92 @@ class Rlist extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			loca: loca || {},
+			title: title || {},
 			weather: weather || {},
 			swipePic: swipePic || [],
 			hotWords: hotWords || [],
 			restaurant: restaurant || []
 		}
 	}
-	componentDidMount (){
-		console.log(loca);
+	componentWillMount (){
 		var that = this;
-		var geohash = method.store('loca');
-		if (geohash) {
+		var loca = method.store('loca');
+		if (loca && swipePic.length === 0) {
+
+			var geohash = loca.geohash;
+			var lat = loca.lat;
+			var lnt = loca.lnt;
+
 			var loca_url = '/v2/pois/' + geohash;
+			var swipe_url = '/v2/index_entry?geohash='+ geohash +'&group_type=1&flags[]=F';
+			var weather_url = '/bgs/weather/current?latitude='+ lat +'&longitude=' + lnt;
+			var hotwords_url = '/shopping/v3/hot_search_words?latitude='+ lat +'&longitude=' + lnt;
+			var restaurant_url = '/shopping/restaurants?latitude='+ lat +'&longitude='+ lnt +'&offset=0&limit=20&extras[]=activities&terminal=h5';
+
 			fetch(loca_url).then(function(res){
 				return res.json()
 			}).then(function(data){
 				that.setState({
-					loca: data
+					title: data
 				})
-				loca = data;
-				console.log(loca);
-			}).then(function(){
-				var weather_url = '/bgs/weather/current?latitude='+ that.state.loca.latitude +'&longitude=' + that.state.loca.longitude;
-				var swipe_url = '/v2/index_entry?geohash='+ geohash +'&group_type=1&flags[]=F';
-				var hotwords_url = '/shopping/v3/hot_search_words?latitude='+ that.state.loca.latitude +'&longitude=' + that.state.loca.longitude;
-				var restaurant_url = '/shopping/restaurants?latitude='+ that.state.loca.latitude +'&longitude='+ that.state.loca.longitude +'&offset=0&limit=20&extras[]=activities&terminal=h5';
-				fetch(weather_url).then(function(res){
-					return res.json()
-				}).then(function(data){
-					that.setState({
-						weather: data
-					})
-					weather = data;
-				})
-				fetch(swipe_url).then(function(res){
-					return res.json()
-				}).then(function(data){
-					console.log(data);
-					that.setState({
-						swipePic: data
-					})
-					swipePic = data;
-				})
-				fetch(hotwords_url).then(function(res){
-					return res.json()
-				}).then(function(data){
-					var arr = [];
-					for(var prop in data){
-						arr.push(data[prop].word)
-					}
-					that.setState({
-						hotWords: arr
-					})
-					hotWords = data;
-				})
-				fetch(restaurant_url).then(function(res){
-					return res.json()
-				}).then(function(data){
-					console.log(data);
-					that.setState({
-						restaurant: data
-					})
-					restaurant = data;
-				})
+				title = data;
 			})
-		} else {
+
+			fetch(weather_url).then(function(res){
+				return res.json()
+			}).then(function(data){
+				that.setState({
+					weather: data
+				})
+				weather = data;
+			})
+			
+			fetch(hotwords_url).then(function(res){
+				return res.json()
+			}).then(function(data){
+				var arr = [];
+				for(var prop in data){
+					arr.push(data[prop].word)
+				}
+				that.setState({
+					hotWords: arr
+				})
+				hotWords = arr;
+			})
+
+			fetch(swipe_url).then(function(res){
+				return res.json()
+			}).then(function(data){
+				that.setState({
+					swipePic: data
+				})
+				swipePic = data;
+			})
+
+			fetch(restaurant_url).then(function(res){
+				return res.json()
+			}).then(function(data){
+				that.setState({
+					restaurant: data
+				})
+				restaurant = data;
+			})
+		}  else if (!title) {
 			that.setState({
-				loca: {
+				title: {
 					name: '请先设置地址哦'
 				}
 			})
 		}
+	}
+	loadMore (){
+		console.log(1);
+		var restaurant_url = '/shopping/restaurants?latitude='+ lat +'&longitude='+ lnt +'&offset=0&limit=20&extras[]=activities&terminal=h5';
+		fetch(url).then(function(res){
+			res.json()
+		}).then(function(data){
+			console.log(data);
+		})
 	}
 	render (){
 		return (
@@ -98,11 +114,11 @@ class Rlist extends React.Component {
 				<div className='r-wrap'>
 					<div className='header'>
 						<div className='header-top'>
-							<Link to='/address'><span className='icon-loca'></span><h2 className='location'>{this.state.loca.name}</h2></Link>
+							<Link to='/address'><span className='icon-loca'></span><h2 className='location'>{this.state.title.name}</h2></Link>
 							<Weather data={this.state.weather}></Weather>
 						</div>
 						<div className='header-center'>
-							<input type="text" className="rl-search" placeholder="搜索商家、商品" />
+							<SearchInp></SearchInp>
 						</div>
 						<div className='header-bottom'>
 							<ul>

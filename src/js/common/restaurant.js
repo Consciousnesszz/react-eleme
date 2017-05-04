@@ -1,6 +1,6 @@
 import React from 'react'
 
-import method from '../../tools/commonMethod.js'
+import method from '../tools/commonMethod.js'
 
 export default class ResInfo extends React.Component {
 	render (){
@@ -36,7 +36,7 @@ export default class ResInfo extends React.Component {
 		}
 
 		return (
-			<a href={'#detail-' + data.id}>
+			<a href={'#/detail/' + data.id}>
 				<dl className="restaurant">
 					<dt className="res-img">
 						<img src={img_path}/>
@@ -49,7 +49,7 @@ export default class ResInfo extends React.Component {
 							</div>
 						</div>
 						<div className="dis-center">
-							<p className="res-info"><span>{data.rating}</span>月售{data.recent_order_num}单</p>
+							<div className="res-info"><div className='r-star'><img className='rate-star' src='/src/img/star.png'/><i className='star-filter' style={{width: (5 - data.rating) / 5 * 100 + '%'}}></i></div><span>{data.rating}</span>月售{data.recent_order_num}单</div>
 							{delivery}
 						</div>
 						<div className="dis-bottom">
