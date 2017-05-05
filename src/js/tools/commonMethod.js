@@ -29,6 +29,31 @@ var method = {
 			return "";
 		}
 	},
+	scroll: function(target, container){
+		var num = target.substring(target.length - 1);
+		var _high = this.factory.heightArr[num];
+
+		container.scrollTop = _high;
+	},
+	touchMove: function(target){
+		var _start = 0;
+		var _startTop = 0;
+		var _end = 0;
+		target.addEventListener('touchstart', function(event){
+			_start = event.changedTouches[0].pageY;
+			_startTop = parseInt(target.style.top) || 0;
+			console.log(target.style.top);
+		})
+		target.addEventListener('touchend', function(event){
+			_end = event.changedTouches[0].pageY;
+			target.style.top = _startTop - (_start - _end) * 1.5 + 'px';
+			console.log(target.style.top);
+		})
+		target.addEventListener('touchmove', function(event){
+			_end = event.changedTouches[0].pageY;
+			target.style.top = _startTop - (_start - _end) + 'px';
+		})
+	},
 	factory: {
 
 	}

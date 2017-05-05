@@ -11,7 +11,9 @@ import SearchInp from './searchInp.js'
 import RstInfo from '../../common/restaurant.js'
 import Footer from '../../common/footer.js'
 
-var title = {},
+// 缓存页面信息
+var cacheGeo = '',
+	title = {},
 	weather = {},
 	swipePic = [],
 	hotWords = [],
@@ -30,12 +32,16 @@ class Rlist extends React.Component {
 	}
 	componentWillMount (){
 		var that = this;
-		var loca = method.store('loca');
-		if (loca && swipePic.length === 0) {
 
-			var geohash = loca.geohash;
-			var lat = loca.lat;
-			var lnt = loca.lnt;
+		var loca = method.store('loca');
+		var geohash = loca.geohash;
+		var lat = loca.lat;
+		var lnt = loca.lnt;
+
+		if ((loca && swipePic.length === 0) || geohash !== cacheGeo) {
+			
+			// 缓存地理位置
+			cacheGeo = geohash;
 
 			var loca_url = '/v2/pois/' + geohash;
 			var swipe_url = '/v2/index_entry?geohash='+ geohash +'&group_type=1&flags[]=F';

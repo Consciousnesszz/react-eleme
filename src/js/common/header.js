@@ -1,8 +1,15 @@
 import React from 'react'
 
+import method from '../tools/commonMethod.js'
+
 class Header extends React.Component {
 	back (){
-		history.back();
+		let hash = location.hash.split('/')[1];
+		if (hash === 'detail') {
+			method.factory.showShopInfo('100%');
+		} else {
+			history.back();
+		}
 	}
 	render (){
 		return (
