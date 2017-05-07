@@ -1,6 +1,5 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import Scroller from 'react-infinite-scroller';
 
 import method from '../../tools/commonMethod.js'
 
@@ -34,11 +33,12 @@ class Rlist extends React.Component {
 		var that = this;
 
 		var loca = method.store('loca');
-		var geohash = loca.geohash;
-		var lat = loca.lat;
-		var lnt = loca.lnt;
-
-		if ((loca && swipePic.length === 0) || geohash !== cacheGeo) {
+		if (loca) {
+			var geohash = loca.geohash;
+			var lat = loca.lat;
+			var lnt = loca.lnt;
+		}
+		if ((loca && swipePic.length === 0) || (geohash && geohash !== cacheGeo)) {
 			
 			// 缓存地理位置
 			cacheGeo = geohash;
@@ -97,7 +97,7 @@ class Rlist extends React.Component {
 				})
 				restaurant = data;
 			})
-		}  else if (!title) {
+		}  else if(!loca) {
 			that.setState({
 				title: {
 					name: '请先设置地址哦'
