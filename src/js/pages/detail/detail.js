@@ -2,13 +2,13 @@ import React from 'react'
 
 import method from '../../tools/commonMethod.js'
 
-import Header from './header.js'
-import Nav from './nav.js'
-import FoodNav from './foodNav.js'
-import FoodList from './foodList.js'
-import Cart from './cart.js'
-import CartView from './cartView.js'
-import ShopInf from './shopInf.js'
+import Header from './component/header.js'
+import Nav from './component/nav.js'
+import FoodNav from './component/foodNav.js'
+import FoodList from './component/foodList.js'
+import Cart from './component/cart.js'
+import CartView from './component/cartView.js'
+import ShopInf from './component/shopInf.js'
 
 class Detail extends React.Component {
 	constructor (props){
@@ -50,25 +50,36 @@ class Detail extends React.Component {
 		}).then(function(data){
 			
 			var orderedFood = method.store(that.props.match.params.id);
-			for(var key in orderedFood){
+			
+			if (orderedFood) {
+				for(var key in orderedFood){
+					that.setState({
+						orderCount: that.state.orderCount + orderedFood[key].num,
+						orderPrice: that.state.orderPrice + orderedFood[key].num * orderedFood[key].specfoods[0].price
+					})
+				}
+			} else {
 				that.setState({
-					orderCount: that.state.orderCount + orderedFood[key].num,
-					orderPrice: that.state.orderPrice + orderedFood[key].num * orderedFood[key].specfoods[0].price
+					orderCount: 0,
+					orderPrice: 0
 				})
 			}
 			for(var i in data){
 				for(var j in data[i].foods){
 					// 初始化数量
 					data[i].foods[j].num = 0;
-
-					// 设置缓存中的数量
-					for(var key in orderedFood) {
-						if (data[i].foods[j].item_id === key) {
-							data[i].foods[j].num = orderedFood[key].num;
+						
+					if (orderedFood) {
+						// 设置缓存中的数量
+						for(var key in orderedFood) {
+							if (data[i].foods[j].item_id === key) {
+								data[i].foods[j].num = orderedFood[key].num;
+							}
 						}
 					}
 				}
 			}
+			
 			that.setState({
 				foodInf: data
 			})
@@ -99,6 +110,7 @@ class Detail extends React.Component {
 		var foodInf = this.state.foodInf;
 		var num = this.state.orderCount;
 		var price = this.state.orderPrice;
+		
 		// 查找food
 		for(var i in foodInf){
 			for(var j in foodInf[i].foods){
@@ -114,6 +126,7 @@ class Detail extends React.Component {
 				}
 			}
 		}
+		
 		method.store(restaurant_id, this.state.orderedFood);
 	}
 	minus (foodId){
@@ -145,6 +158,7 @@ class Detail extends React.Component {
 	}
 	render (){
 		var that = this;
+		console.log(this.state.resInf.float_minimum_order_amount);
 		return (
 			<div className="section" id="detail">
 				<div className="detail-flex">
@@ -171,7 +185,7 @@ class Detail extends React.Component {
 						</div>
 					</div>
 					<CartView status={this.state.cartStatus} fn={this.showCartView.bind(this)}></CartView>
-					<Cart data={this.state.resInf} count={this.state.orderCount} price={this.state.orderPrice} fn={this.showCartView.bind(this)}></Cart>
+					<Cart data={this.state.resInf} count={this.state.orderCount} price={this.state.orderPrice} fn={this.showCartView.bind(this)} dif={(this.state.resInf.float_minimum_order_amount - this.state.orderPrice).toFixed(2)}></Cart>
 				</div>
 				<div className="shop-info-wrap" style={{left: this.state.shopInfPos}}>
 					<ShopInf data={this.state.resInf}></ShopInf>

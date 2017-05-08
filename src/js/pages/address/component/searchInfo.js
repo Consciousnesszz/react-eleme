@@ -1,5 +1,5 @@
 import React from 'react'
-import method from '../../tools/commonMethod.js'
+import method from '../../../tools/commonMethod.js'
 
 class Info extends React.Component {
 	setAddr (){

@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import method from '../../tools/commonMethod.js'
+import method from '../../../tools/commonMethod.js'
 
 export default class HeadInp extends React.Component {
 	constructor (props){

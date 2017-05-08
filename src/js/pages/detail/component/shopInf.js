@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Header from '../../common/header.js'
+import Header from '../../../common/header.js'
 
 export default class Cart extends React.Component {
 	render(){

@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom'
 
 import method from '../../tools/commonMethod.js'
 
-import Weather from './weather.js'
-import Swipe from './swipe.js'
-import SearchInp from './searchInp.js'
+import Weather from './component/weather.js'
+import Swipe from './component/swipe.js'
+import SearchInp from './component/searchInp.js'
 
 import RstInfo from '../../common/restaurant.js'
 import Footer from '../../common/footer.js'

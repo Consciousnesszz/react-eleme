@@ -2,7 +2,7 @@ import React from 'react'
 import ReactSwipe from 'react-swipe'
 import classnames from 'classnames'
 
-import method from '../../tools/commonMethod.js'
+import method from '../../../tools/commonMethod.js'
 
 export default class Swipe extends React.Component {
 	constructor (props){

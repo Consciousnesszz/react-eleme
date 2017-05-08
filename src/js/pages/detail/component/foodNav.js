@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import method from '../../tools/commonMethod.js'
+import method from '../../../tools/commonMethod.js'
 
 export default class Cart extends React.Component {
 	toTarget (event){

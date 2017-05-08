@@ -1,8 +1,8 @@
 import React from 'react'
 
-import method from '../../tools/commonMethod.js'
+import method from '../../../tools/commonMethod.js'
 
-import Food from '../../common/food.js'
+import Food from '../../../common/food.js'
 
 export default class FoodList extends React.Component {
 	componentDidMount (){

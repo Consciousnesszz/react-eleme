@@ -1,8 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-import HeadInp from './input.js'
-import SortNav from './sortNav.js'
+import HeadInp from './component/input.js'
+import SortNav from './component/sortNav.js'
 
 import ResInfo from '../../common/restaurant.js'
 

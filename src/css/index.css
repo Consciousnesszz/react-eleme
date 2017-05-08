@@ -143,7 +143,7 @@ i, b {
 	white-space: nowrap;
 	overflow: hidden;
 	color: #fff;
-	font-weight: 100;
+	font-weight: 500;
 	vertical-align: middle;
 }
 #rlist .icon-loca {
@@ -633,8 +633,16 @@ i, b {
 .shop-main .smain-right .food-img {
 	width: 0.5rem;
 	height: 0.5rem;
-	background: #aaa;
+	background: #fff;
+	vertical-align: center;
 	margin-right: 0.1rem;
+}
+.shop-main .smain-right .food-img:after {
+	content: '';
+	display: inline-block;
+	width: 0;
+	height: 100%;
+	vertical-align: center;
 }
 .shop-main .smain-right .food-img img {
 	width: 100%;

@@ -1,5 +1,5 @@
 import React from 'react'
-import method from '../../tools/commonMethod.js'
+import method from '../../../tools/commonMethod.js'
 
 export default class Weather extends React.Component {
 	render (){

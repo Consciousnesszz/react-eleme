@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import 'whatwg-fetch'
 
-import Header from '../../common/header.js'
+import Header from '../../../common/header.js'
 
 class Input extends React.Component {
 	search (event){

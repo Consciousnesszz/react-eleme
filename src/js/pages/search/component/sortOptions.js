@@ -1,6 +1,6 @@
 import React from 'react'
 
-import method from '../../tools/commonMethod.js'
+import method from '../../../tools/commonMethod.js'
 
 export default class SortOptions extends React.Component {
 	sort (event){

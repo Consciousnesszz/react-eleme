@@ -1,8 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-import Input from './input.js'
-import Info from './searchInfo.js'
+import Input from './component/input.js'
+import Info from './component/searchInfo.js'
 
 var addrs = [];
 
