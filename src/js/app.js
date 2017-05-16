@@ -6,6 +6,7 @@ import Address from './pages/address/address.js'
 import Search from './pages/search/search.js'
 import Detail from './pages/detail/detail.js'
 import Rlist from './pages/rlist/rlist.js'
+import Mine from './pages/mine/mine.js'
 
 import rem from './tools/rem.js'
 import icon from '../css/font_bgp7kcvc5o9cz0k9/iconfont.css'
@@ -26,6 +27,8 @@ class Container extends React.Component {
 					<Route exact path="/" component={Rlist}/>
 					<Route path='/detail/:id' component={Detail}/>
 					<Route path='/address' component={Address}/>
+					<Route path='/search/:keyword' component={Search}/>
+					<Route path='/mine' component={Mine}/>
 					<Route path='/search/:keyword' component={Search}/>
 				</div>
 			</Router>
